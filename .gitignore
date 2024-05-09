@@ -1,0 +1,9 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore development and local environment files
+*.env
+*.sqlite3

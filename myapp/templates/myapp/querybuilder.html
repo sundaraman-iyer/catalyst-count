@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Query Builder{% endblock %}
+
+{% block content %}
+{% include 'myapp/snippets/navbar.html' %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="mb-4">Query Builder</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="nameFilter" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="nameFilter" name="name" placeholder="Enter name">
+                </div>
+                <div class="mb-3">
+                    <label for="yearFoundedFilter" class="form-label">Year Founded:</label>
+                    <input type="text" class="form-control" id="yearFoundedFilter" name="year_founded" placeholder="Enter year founded">
+                </div>
+                <div class="mb-3">
+                    <label for="industryFilter" class="form-label">Industry:</label>
+                    <input type="text" class="form-control" id="industryFilter" name="industry" placeholder="Enter industry">
+                </div>
+                <div class="mb-3">
+                    <label for="countryFilter" class="form-label">Country:</label>
+                    <input type="text" class="form-control" id="countryFilter" name="country" placeholder="Enter country">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary" id="queryButton">Query Data</button>
+                    <a href="{% url 'querybuilder' %}" class="btn btn-secondary" id="resetButton">Reset Filters</a>
+                </div>
+            </form>
+            {% if count is not None %}
+            <div id="resultDiv">
+                <p id="resultMessage">Number of records found: {{ count }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
